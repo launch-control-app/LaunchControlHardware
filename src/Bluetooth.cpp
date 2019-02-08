@@ -1,20 +1,20 @@
 #include "Bluetooth.hpp"
 
-Bluetooth::Bluetooth(HardwareSerial &UART, PIN CMD_PIN,
-                     PIN STATE_PIN_, uint32_t baud)
-    : UART_(UART), CMD_PIN_(CMD_PIN), STATE_PIN_(STATE_PIN_), baud_(baud)
+Bluetooth::Bluetooth(HardwareSerial &uart, PIN_t CMD_PIN,
+                     PIN_t STATE_PIN_, uint32_t baud)
+    : uart_(uart), CMD_PIN_(CMD_PIN), STATE_PIN_(STATE_PIN_), baud_(baud)
 {
-  UART_.begin(baud_);
+  uart_.begin(baud_);
 }
 
 Bluetooth::~Bluetooth()
 {
-  UART_.end();
+  uart_.end();
 }
 
 void Bluetooth::transmit(const String msg)
 {
-  UART_.println(msg);
+  uart_.println(msg);
 }
 
 bool Bluetooth::connected()

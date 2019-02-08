@@ -3,6 +3,6 @@
 
 #include <stdint.h>
 
-typedef const uint8_t PIN;
+typedef const uint8_t PIN_t;
 
 #endif

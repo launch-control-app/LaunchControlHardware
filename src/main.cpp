@@ -6,6 +6,8 @@
 #include "OBD2IO.hpp" // OBD library automatically interfaces with Serial1
                       //  pins 0 (RX) and 1 (TX)
 
+#include "ObdProfile.hpp"
+
 #include "debug/DebugLog.hpp" // Prints to USB Serial at 9600 baudrate
 
 #define BT_SERIAL Serial4 // Serial4 uses pins 31 (RX) and 32 (TX)
@@ -13,7 +15,6 @@
                           //  for faster data transfer
 #define BT_CMD 24         // TODO: the defines should probably be changed to
 #define BT_STATE 25       //  constant variables
-
 
 std::shared_ptr<Bluetooth> bluetooth;
 
