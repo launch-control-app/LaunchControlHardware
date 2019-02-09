@@ -3,10 +3,8 @@
 #include <Arduino.h>
 
 #include "Bluetooth.hpp"
-#include "OBD2IO.hpp" // OBD library automatically interfaces with Serial1
+#include <OBD2UART.h> // OBD library automatically interfaces with Serial1
                       //  pins 0 (RX) and 1 (TX)
-
-#include "ObdProfile.hpp"
 
 #include "debug/DebugLog.hpp" // Prints to USB Serial at 9600 baudrate
 
