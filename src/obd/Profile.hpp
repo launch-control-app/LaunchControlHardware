@@ -7,7 +7,7 @@
 
 #include "stdint.h"
 
-#include "Pid.hpp"
+#include "pid.hpp"
 
 namespace obd
 {
@@ -16,8 +16,10 @@ class Profile
 {
 public:
   typedef const uint32_t PERIOD_t;
-  void addPid(pid::PID_t pid, PERIOD_t period);
-  std::set<PERIOD_t> getPeriods();
+  typedef const std::set<PERIOD_t> PERIODS_t;
+  void add_pid(pid::PID_t pid, PERIOD_t period);
+  PERIODS_t get_periods();
+  
 
 private:
   std::map<PERIOD_t, std::vector<pid::PID_t>> profile_;

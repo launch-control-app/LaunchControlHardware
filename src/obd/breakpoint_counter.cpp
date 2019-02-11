@@ -3,12 +3,21 @@
 namespace obd
 {
 
+BreakpointCounter::BreakpointCounter &BreakpointCounter::get_instance()
+{
+    static BreakpointCounter breakpoint_counter;
+    return breakpoint_counter;
+}
+
 void BreakpointCounter::set_breakpoints(const breakpoints_t &breakpoints)
 {
     breakpoints_ = breakpoints;
 }
 
-void BreakpointCounter::start() { timer_.begin(increment, INTERVAL); }
+void BreakpointCounter::start()
+{
+    timer_.begin(get_instance().increment, INTERVAL);
+}
 
 void BreakpointCounter::stop() { timer_.end(); }
 

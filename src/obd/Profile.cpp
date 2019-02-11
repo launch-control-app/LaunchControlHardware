@@ -1,9 +1,9 @@
-#include "Profile.hpp"
+#include "profile.hpp"
 
 namespace obd
 {
 
-void Profile::addPid(pid::PID_t pid, PERIOD_t period)
+void Profile::add_pid(pid::PID_t pid, PERIOD_t period)
 {
     if (profile_.find(period) == profile_.end)
         profile_[period] = std::vector<pid::PID_t>{pid};
@@ -11,7 +11,7 @@ void Profile::addPid(pid::PID_t pid, PERIOD_t period)
         profile_[period].push_back(pid);
 }
 
-std::set<Profile::PERIOD_t> Profile::getPeriods()
+Profile::PERIODS_t Profile::get_periods()
 {
     std::set<PERIOD_t> periods;
     for (const auto &profile_entry : profile_)
