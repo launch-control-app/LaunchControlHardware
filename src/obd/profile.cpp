@@ -19,10 +19,11 @@ const Profile::PERIODs_t Profile::get_periods()
     return periods;
 }
 
-const pid::PIDs_t Profile::get_pids(PERIOD_t period) {
+const pid::PIDs_t Profile::get_pids(PERIOD_t period)
+{
     pid::PIDs_t pids;
-    for (pid::PID_t& pid: profile_.at(period))
+    for (pid::PID_t &pid : profile_.at(period))
         pids.insert(pid);
-} 
+}
 
 } // namespace obd
