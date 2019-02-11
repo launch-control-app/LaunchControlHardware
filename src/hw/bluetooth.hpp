@@ -1,9 +1,12 @@
-#ifndef BLUETOOTH_H
-#define BLUETOOTH_H
+#ifndef LAUNCHCONTROL_DATALOGGER_HW_BLUETOOTH_H
+#define LAUNCHCONTROL_DATALOGGER_HW_BLUETOOTH_H
 
 #include <Arduino.h>
 
-#include "Hardware.hpp"
+#include "hardware.hpp"
+
+namespace hw
+{
 
 class Bluetooth
 {
@@ -20,5 +23,7 @@ class Bluetooth
     PIN_t STATE_PIN_;
     uint32_t baud_;
 };
+
+} // namespace hw
 
 #endif

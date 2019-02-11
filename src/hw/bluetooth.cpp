@@ -1,4 +1,7 @@
-#include "Bluetooth.hpp"
+#include "bluetooth.hpp"
+
+namespace hw
+{
 
 Bluetooth::Bluetooth(HardwareSerial &uart, PIN_t CMD_PIN,
                      PIN_t STATE_PIN_, uint32_t baud)
@@ -21,3 +24,5 @@ bool Bluetooth::connected()
 {
   return digitalRead(STATE_PIN_);
 }
+
+} // namespace hw
