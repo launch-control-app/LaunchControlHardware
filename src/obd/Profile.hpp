@@ -16,9 +16,10 @@ class Profile
 {
 public:
   typedef const uint32_t PERIOD_t;
-  typedef const std::set<PERIOD_t> PERIODS_t;
+  typedef std::set<PERIOD_t> PERIODs_t;
   void add_pid(pid::PID_t pid, PERIOD_t period);
-  PERIODS_t get_periods();
+  const PERIODs_t get_periods();
+  const pid::PIDs_t get_pids(PERIOD_t period);
   
 private:
   std::map<PERIOD_t, std::vector<pid::PID_t>> profile_;

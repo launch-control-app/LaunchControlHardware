@@ -1,6 +1,6 @@
 #include "breakpoint_counter.hpp"
 
-namespace obd
+namespace hw
 {
 
 BreakpointCounter::BreakpointCounter &BreakpointCounter::get_instance()
@@ -9,7 +9,7 @@ BreakpointCounter::BreakpointCounter &BreakpointCounter::get_instance()
     return breakpoint_counter;
 }
 
-void BreakpointCounter::set_breakpoints(const breakpoints_t &breakpoints)
+void BreakpointCounter::set_breakpoints(const Breakpoints_t &breakpoints)
 {
     breakpoints_ = breakpoints;
 }
@@ -21,18 +21,18 @@ void BreakpointCounter::start()
 
 void BreakpointCounter::stop() { timer_.end(); }
 
-BreakpointCounter::count_t BreakpointCounter::get_count()
+const BreakpointCounter::Count_t BreakpointCounter::get_count()
 {
-    count_t count;
+    Count_t count;
     noInterrupts();
     count = count_;
     interrupts();
     return count;
 }
 
-BreakpointCounter::count_t BreakpointCounter::get_stall_count()
+const BreakpointCounter::Count_t BreakpointCounter::get_stall_count()
 {
-    count_t count;
+    Count_t count;
     noInterrupts();
     count = stall_count_;
     interrupts();

@@ -11,7 +11,7 @@ namespace pid
 {
 
 typedef const uint8_t PID_t;
-typedef const std::set<PID_t> PIDs_t;
+typedef std::set<PID_t> PIDs_t;
 typedef int Value_t;
 
 } // namespace pid
