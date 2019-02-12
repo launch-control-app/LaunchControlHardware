@@ -1,7 +1,5 @@
 #include "breakpoint_counter.hpp"
 
-const uint16_t hw::BreakpointCounter::INTERVAL(1000);
-
 namespace hw
 {
 
@@ -18,7 +16,7 @@ void BreakpointCounter::set_breakpoints(const Breakpoints_t &breakpoints)
 
 void BreakpointCounter::start()
 {
-    timer_.begin(breakpoint_counter::increment, 1000);
+    timer_.begin(BreakpointCounter::increment, INTERVAL);
 }
 
 void BreakpointCounter::stop() { timer_.end(); }
@@ -26,35 +24,33 @@ void BreakpointCounter::stop() { timer_.end(); }
 const BreakpointCounter::Count_t BreakpointCounter::get_count()
 {
     Count_t count;
-    noInterrupts();
+    stop();
     count = count_;
-    interrupts();
+    start();
     return count;
 }
 
 const BreakpointCounter::Count_t BreakpointCounter::get_stall_count()
 {
     Count_t count;
-    noInterrupts();
+    stop();
     count = stall_count_;
-    interrupts();
+    start();
     return count;
 }
 
 void BreakpointCounter::next_breakpoint()
 {
-    noInterrupts();
+    stop();
     if (++breakpoint_pos_ == breakpoints_.end())
         breakpoint_pos_ = breakpoints_.begin();
     current_breakpoint_ = *breakpoint_pos_;
     count_ = 0;
     stall_count_ = 0;
-    interrupts();
+    start();
 }
 
-namespace breakpoint_counter
-{
-void increment()
+void BreakpointCounter::increment()
 {
     BreakpointCounter breakpoint_counter = BreakpointCounter::get_instance();
     if (breakpoint_counter.count_ < breakpoint_counter.current_breakpoint_)
@@ -62,6 +58,5 @@ void increment()
     else
         breakpoint_counter.stall_count_++;
 }
-} // namespace breakpoint_counter
 
 } // namespace hw
