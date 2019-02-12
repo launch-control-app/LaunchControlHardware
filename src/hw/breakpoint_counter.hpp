@@ -9,6 +9,8 @@
 namespace hw
 {
 
+namespace breakpoint_counter { void increment(); }
+
 class BreakpointCounter
 {
   public:
@@ -24,9 +26,9 @@ class BreakpointCounter
     void next_breakpoint();
 
   private:
-    static const uint16_t INTERVAL = 1000; // microseconds
+    static const uint16_t INTERVAL; // microseconds
     BreakpointCounter(){};
-    void increment();
+    friend void breakpoint_counter::increment();
     IntervalTimer timer_;
     Breakpoints_t breakpoints_;
     Breakpoints_t::iterator breakpoint_pos_;
@@ -35,6 +37,6 @@ class BreakpointCounter
     volatile Count_t stall_count_;
 };
 
-} // namespace obd
+} // namespace hw
 
 #endif
