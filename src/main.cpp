@@ -2,9 +2,10 @@
 
 #include <Arduino.h>
 
-#include "hw/bluetooth.hpp"
-#include <OBD2UART.h> // OBD library automatically interfaces with Serial1
-                      //  pins 0 (RX) and 1 (TX)
+#include "hardware/breakpoint_counter.hpp"
+#include "hardware/bluetooth.hpp"
+#include "hardware/obd_uart.hpp" // OBD library automatically interfaces with 
+                                 //  Serial1: pins 0 (RX) and 1 (TX)
 
 #include "debug/log.hpp" // Prints to USB Serial at 9600 baudrate
 
@@ -14,11 +15,13 @@
 #define BT_CMD 24         // TODO: the defines should probably be changed to
 #define BT_STATE 25       //  constant variables
 
-std::shared_ptr<hw::Bluetooth> bluetooth;
+COBD cobd;
+hardware::BreakpointCounter &breakpoint_counter = hardware::BreakpointCounter::get_instance();
+std::shared_ptr<hardware::Bluetooth> bluetooth;
 
 void setup()
 {
-    bluetooth = std::make_shared<hw::Bluetooth>(BT_SERIAL, BT_CMD, BT_STATE, BT_BAUD);
+    bluetooth = std::make_shared<hardware::Bluetooth>(BT_SERIAL, BT_CMD, BT_STATE, BT_BAUD);
 }
 
 void loop() // TODO: move the following series of test cases
@@ -33,7 +36,7 @@ void loop() // TODO: move the following series of test cases
 
     // Bug: the above test cases complete successfully but bluetooth->connected()
     //  always returns false
-    if (bluetooth->connected())
+    if (bluetooth->is_connected())
     {
         debug::Log::info("sending '1337' over bluetooth");
         bluetooth->transmit("1337");

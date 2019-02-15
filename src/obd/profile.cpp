@@ -3,20 +3,22 @@
 namespace obd
 {
 
+Profile::Profile() {}
+
 void Profile::add_pid(const pid::Pid_t &pid, const Period_t &period)
 {
-    profile_[period].push_back(pid);
+    profile_[period].emplace_back(pid);
 }
 
-const Profile::Periods_t Profile::get_periods()
+const Profile::Periods_t Profile::get_periods() const
 {
     Periods_t periods;
     for (const auto &profile_entry : profile_)
-        periods.insert(profile_entry.first);
+        periods.emplace(profile_entry.first);
     return periods;
 }
 
-const pid::Pids_t Profile::get_pids(const Period_t &period)
+const pid::Pids_t Profile::get_pids(const Period_t &period) const
 {
     return profile_.at(period);
 }

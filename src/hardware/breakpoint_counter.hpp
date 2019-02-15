@@ -1,12 +1,12 @@
-#ifndef LAUNCHCONTROL_DATALOGGER_HW_BREAKPOINTCOUNTER_H
-#define LAUNCHCONTROL_DATALOGGER_HW_BREAKPOINTCOUNTER_H
+#ifndef LAUNCH_CONTROL_DATA_COLLECTOR_HARDWARE_BREAKPOINT_COUNTER_H
+#define LAUNCH_CONTROL_DATA_COLLECTOR_HARDWARE_BREAKPOINT_COUNTER_H
 
 #include <list>
 
 #include <Arduino.h>
 #include <IntervalTimer.h>
 
-namespace hw
+namespace hardware
 {
 
 class BreakpointCounter
@@ -35,6 +35,6 @@ class BreakpointCounter
     volatile Count_t stall_count_;
 };
 
-} // namespace hw
+} // namespace hardware
 
 #endif

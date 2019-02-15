@@ -1,6 +1,6 @@
 #include "breakpoint_counter.hpp"
 
-namespace hw
+namespace hardware
 {
 
 BreakpointCounter &BreakpointCounter::get_instance()
@@ -59,4 +59,4 @@ void BreakpointCounter::increment()
         breakpoint_counter.stall_count_++;
 }
 
-} // namespace hw
+} // namespace hardware

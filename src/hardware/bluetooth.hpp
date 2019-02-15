@@ -1,11 +1,11 @@
-#ifndef LAUNCHCONTROL_DATALOGGER_HW_BLUETOOTH_H
-#define LAUNCHCONTROL_DATALOGGER_HW_BLUETOOTH_H
+#ifndef LAUNCH_CONTROL_DATA_COLLECTOR_HARDWARE_BLUETOOTH_H
+#define LAUNCH_CONTROL_DATA_COLLECTOR_HARDWARE_BLUETOOTH_H
 
 #include <Arduino.h>
 
 #include "hardware.hpp"
 
-namespace hw
+namespace hardware
 {
 
 class Bluetooth
@@ -15,7 +15,7 @@ class Bluetooth
               PIN_t STATE_PIN, uint32_t baud);
     ~Bluetooth();
     void transmit(const String msg);
-    bool connected();
+    const bool is_connected() const;
 
   private:
     HardwareSerial &uart_;
@@ -24,6 +24,6 @@ class Bluetooth
     uint32_t baud_;
 };
 
-} // namespace hw
+} // namespace hardware
 
 #endif
