@@ -19,6 +19,7 @@ void BreakpointCounter::start()
     timer_.begin(BreakpointCounter::increment, INTERVAL);
 }
 
+// TODO: check if this function resets IntervalTimer's counter
 void BreakpointCounter::stop() { timer_.end(); }
 
 const BreakpointCounter::Count_t BreakpointCounter::get_count()

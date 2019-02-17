@@ -7,7 +7,7 @@
 
 #include "stdint.h"
 
-#include "pid.hpp"
+#include "hardware/obd_uart.hpp"
 
 namespace obd
 {
@@ -18,12 +18,12 @@ class Profile
     typedef uint32_t Period_t;
     typedef std::set<Period_t> Periods_t;
     Profile();
-    void add_pid(const pid::Pid_t &pid, const Period_t& period);
+    void add_pid(const hardware::ObdUart::Pid_t &pid, const Period_t& period);
     const Periods_t get_periods() const;
-    const pid::Pids_t get_pids(const Period_t &period) const;
+    const hardware::ObdUart::Pids_t& get_pids(const Period_t &period) const;
 
   private:
-    std::map<Period_t, pid::Pids_t> profile_;
+    std::map<Period_t, hardware::ObdUart::Pids_t> profile_;
 };
 
 } // namespace obd

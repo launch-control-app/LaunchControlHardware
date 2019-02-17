@@ -2,20 +2,16 @@
 
 namespace obd
 {
+    
+CarStatus::CarStatus(const hardware::ObdUart::Pid_fields_t &pid_fields)
+    : pid_fields_(pid_fields){};
 
-CarStatus::CarStatus(){};
-
-void CarStatus::add_field(const pid::Pid_t &pid, const pid::Value_t &value)
+const hardware::ObdUart::Pid_fields_t &CarStatus::get_fields() const 
 {
-    fields_.emplace_back(pid, value);
+    return pid_fields_;
 }
 
-const CarStatus::Fields_t &CarStatus::get_fields() const
-{
-    return fields_;
-}
-
-// TODO: fix output formatting once bluetooth data message 
+// TODO: fix output formatting once bluetooth data message
 //  format has been finalized
 std::ostream &operator<<(std::ostream &os, const CarStatus &car_status)
 {
