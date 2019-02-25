@@ -5,23 +5,21 @@ namespace obd
 
 Profile::Profile() {}
 
-void Profile::add_pid(const hardware::ObdUart::Pid_t &pid,
-                      const Period_t &period)
+void Profile::add_pid(const Pid_t &pid, const Period_t &period)
 {
-    profile_[period].emplace_back(pid);
+    pids_and_periods_.emplace_back(pid, period);
 }
 
-const Profile::Periods_t Profile::get_periods() const
+const Profile::Pids_and_periods_t &Profile::get_pids_and_periods() const
 {
-    Periods_t periods;
-    for (const auto &profile_entry : profile_)
-        periods.emplace(profile_entry.first);
-    return periods;
+    return pids_and_periods_;
 }
 
-const hardware::ObdUart::Pids_t &Profile::get_pids(const Period_t &period) const
+const Profile::Period_t &Profile::get_period(const Pid_t &pid) const
 {
-    return profile_.at(period);
+    for (const auto &pid_and_period : pids_and_periods_)
+        if (pid_and_period.pid == pid)
+            return pid_and_period.period;
 }
 
 } // namespace obd

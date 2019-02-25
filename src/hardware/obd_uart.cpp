@@ -3,16 +3,33 @@
 namespace hardware
 {
 
-const ObdUart::Pid_fields_t ObdUart::read_pids(const Pids_t &pids)
+ObdUart::Firmware_version_t ObdUart::begin()
 {
-    Pid_fields_t pid_fields;
+    Firmware_version_t firmware_version = COBD::begin();
+    while (!COBD::init())
+        ;
+    return firmware_version;
+}
+
+const ObdUart::Vin_t ObdUart::get_vin()
+{
+    char buffer[RECEIVE_BUFFER_SIZE];
+    COBD::getVIN(buffer, RECEIVE_BUFFER_SIZE);
+    return buffer;
+}
+
+const ObdUart::Pids_and_values_t ObdUart::read_pids(const Pids_t &pids)
+{
+    Pids_and_values_t pids_and_values;
     for (Pid_group_t &pid_group : group_pids(pids))
     {
-        readPID(pid_group.pids.data(), pid_group.size, pid_group.values.data());
+        COBD::readPID(pid_group.pids.data(), pid_group.size,
+                      pid_group.values.data());
         for (int i = 0; i < pid_group.size; i++)
-            pid_fields.emplace_back(pid_group.pids[i], pid_group.values[i]);
+            pids_and_values.emplace_back(pid_group.pids[i],
+                                         pid_group.values[i]);
     }
-    return pid_fields;
+    return pids_and_values;
 }
 
 ObdUart::Pid_groups_t ObdUart::group_pids(const Pids_t &pids)

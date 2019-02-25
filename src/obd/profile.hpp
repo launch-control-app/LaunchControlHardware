@@ -7,6 +7,7 @@
 
 #include "stdint.h"
 
+#include "hardware/breakpoint_counter.hpp"
 #include "hardware/obd_uart.hpp"
 
 namespace obd
@@ -14,16 +15,23 @@ namespace obd
 
 class Profile
 {
-  public:
-    typedef uint32_t Period_t;
-    typedef std::set<Period_t> Periods_t;
-    Profile();
-    void add_pid(const hardware::ObdUart::Pid_t &pid, const Period_t& period);
-    const Periods_t get_periods() const;
-    const hardware::ObdUart::Pids_t& get_pids(const Period_t &period) const;
+public:
+  using Pid_t = hardware::ObdUart::Pid_t;
+  using Period_t = hardware::BreakpointCounter::Count_t;
+  struct Pid_and_period_t
+  {
+    Pid_and_period_t(Pid_t pid, Period_t period) : pid(pid), period(period) {}
+    Pid_t pid;
+    Period_t period;
+  };
+  using Pids_and_periods_t = std::list<Pid_and_period_t>;
+  Profile();
+  void add_pid(const Pid_t &pid, const Period_t &period);
+  const Pids_and_periods_t &get_pids_and_periods() const;
+  const Period_t &get_period(const Pid_t &pid) const;
 
-  private:
-    std::map<Period_t, hardware::ObdUart::Pids_t> profile_;
+private:
+  Pids_and_periods_t pids_and_periods_;
 };
 
 } // namespace obd

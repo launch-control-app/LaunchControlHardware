@@ -12,25 +12,23 @@ namespace hardware
 class BreakpointCounter
 {
   public:
-    typedef uint64_t Count_t;
-    typedef Count_t Breakpoint_t;
-    typedef std::list<Breakpoint_t> Breakpoints_t;
+    using Count_t = uint64_t;
     static BreakpointCounter &get_instance();
-    void set_breakpoints(const Breakpoints_t &breakpoints);
+    void set_breakpoint(const Count_t &breakpoint);
     void start();
     void stop();
+    const bool has_reached_breakpoint() const;
     const Count_t get_count();
     const Count_t get_stall_count();
-    void next_breakpoint();
 
   private:
     static const uint16_t INTERVAL = 1000; // microseconds
-    static void increment();
     BreakpointCounter() = default;
+    static void increment();
+    void reset_count();
     IntervalTimer timer_;
-    Breakpoints_t breakpoints_;
-    Breakpoints_t::iterator breakpoint_pos_;
-    Breakpoint_t current_breakpoint_;
+    Count_t breakpoint_;
+    volatile boolean reached_breakpoint_;
     volatile Count_t count_;
     volatile Count_t stall_count_;
 };

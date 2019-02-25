@@ -4,14 +4,20 @@ namespace obd
 {
 
 Io::Io(hardware::Bluetooth &bluetooth, hardware::ObdUart obd_uart,
-     hardware::BreakpointCounter &breakpoint_counter, const Profile &profile)
-    :  bluetooth_(bluetooth), poller_(obd_uart, breakpoint_counter, profile) {}
+       hardware::BreakpointCounter &breakpoint_counter)
+    : bluetooth_(bluetooth), poller_(obd_uart, breakpoint_counter) {}
+
+void Io::load_profile(const Profile &profile)
+{
+    poller_.load_profile(profile);
+}
 
 void Io::loop()
 {
+    poller_.poll();
     std::stringstream output;
-    output << poller_.poll();
-    bluetooth_.transmit(output.str().c_str());
+    output << poller_.get_car_status();
+    bluetooth_.transmit(output.str());
 }
 
 } // namespace obd

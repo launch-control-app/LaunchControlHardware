@@ -6,7 +6,7 @@
 namespace hardware
 {
 
-typedef const uint8_t PIN_t;
+using PIN_t = const uint8_t;
 
 } // namespace hardware
 
