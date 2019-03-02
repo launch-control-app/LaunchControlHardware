@@ -1,3 +1,9 @@
+/*
+  Creation Date: Tuesday, 29th January 2019 
+  Original Author: Christian Francisco 
+  Contents of File: Defines a breakpoint counter to detect stalls
+*/
+
 #ifndef LAUNCH_CONTROL_DATA_COLLECTOR_HARDWARE_BREAKPOINT_COUNTER_H
 #define LAUNCH_CONTROL_DATA_COLLECTOR_HARDWARE_BREAKPOINT_COUNTER_H
 

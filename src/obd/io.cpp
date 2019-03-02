@@ -1,3 +1,9 @@
+/*
+  Creation Date: Tuesday, 29th January 2019 
+  Original Author: Christian Francisco 
+  Contents of File: Implements the high level IO class
+*/
+
 #include "io.hpp"
 
 namespace obd

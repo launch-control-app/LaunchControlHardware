@@ -1,3 +1,10 @@
+/*
+  Creation Date: Tuesday, 29th January 2019 
+  Original Author: Christian Francisco 
+  Contents of File: Implements a car status object that maintains the existing
+  profile and updates values
+*/
+
 #include "car_status.hpp"
 
 namespace obd

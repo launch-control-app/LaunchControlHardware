@@ -1,3 +1,9 @@
+/*
+  Creation Date: Tuesday, 29th January 2019 
+  Original Author: Christian Francisco 
+  Contents of File: Implements an encapsulation of the provided OBD-II library 
+*/
+
 #include "obd_uart.hpp"
 
 namespace hardware

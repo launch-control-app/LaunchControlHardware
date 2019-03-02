@@ -1,3 +1,10 @@
+/*
+  Creation Date: Tuesday, 29th January 2019 
+  Original Author: Christian Francisco 
+  Contents of File: Defines a profile that contains the PIDs 
+  to poll and its polling rate
+*/
+
 #ifndef LAUNCH_CONTROL_DATA_COLLECTOR_OBD_PROFILE_H
 #define LAUNCH_CONTROL_DATA_COLLECTOR_OBD_PROFILE_H
 

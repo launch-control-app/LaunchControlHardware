@@ -1,3 +1,10 @@
+/*
+  Creation Date: Tuesday, 29th January 2019 
+  Original Author: Christian Francisco 
+  Contents of File: Defines a car status object that maintains the existing
+  profile and updates values
+*/
+
 #ifndef LAUNCH_CONTROL_DATA_COLLECTOR_OBD_CAR_STATUS_H
 #define LAUNCH_CONTROL_DATA_COLLECTOR_OBD_CAR_STATUS_H
 

@@ -1,3 +1,10 @@
+/*
+  Creation Date: Tuesday, 29th January 2019 
+  Original Author: Christian Francisco 
+  Contents of File: Implements a poller that contains a profile and 
+  breakpoint counter
+*/
+
 #include "poller.hpp"
 
 namespace obd

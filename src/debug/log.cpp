@@ -1,3 +1,9 @@
+/*
+  Creation Date: Tuesday, 29th January 2019 
+  Original Author: Christian Francisco 
+  Contents of File: Implements a logging interface for testing
+*/
+
 #include "log.hpp"
 
 namespace debug

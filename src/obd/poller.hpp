@@ -1,3 +1,10 @@
+/*
+  Creation Date: Tuesday, 29th January 2019 
+  Original Author: Christian Francisco 
+  Contents of File: Defines a poller that contains a profile and 
+  breakpoint counter
+*/
+
 #ifndef LAUNCH_CONTROL_DATA_COLLECTOR_OBD_POLLER_H
 #define LAUNCH_CONTROL_DATA_COLLECTOR_OBD_POLLER_H
 

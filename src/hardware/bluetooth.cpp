@@ -1,3 +1,9 @@
+/*
+  Creation Date: Tuesday, 29th January 2019 
+  Original Author: Christian Francisco 
+  Contents of File: Defines a bluetooth interface for transmitting data
+*/
+
 #include "bluetooth.hpp"
 
 namespace hardware

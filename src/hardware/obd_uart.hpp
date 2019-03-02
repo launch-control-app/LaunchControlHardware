@@ -1,3 +1,9 @@
+/*
+  Creation Date: Tuesday, 29th January 2019 
+  Original Author: Christian Francisco 
+  Contents of File: Defines an encapsulation of the provided OBD-II library 
+*/
+
 #ifndef LAUNCH_CONTROL_DATA_COLLECTOR_HARDWARE_OBD_UART_H
 #define LAUNCH_CONTROL_DATA_COLLECTOR_HARDWARE_OBD_UART_H
 

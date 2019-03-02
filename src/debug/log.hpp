@@ -1,3 +1,9 @@
+/*
+  Creation Date: Tuesday, 29th January 2019 
+  Original Author: Christian Francisco 
+  Contents of File: Defines a logging interface for testing
+*/
+
 #ifndef LAUNCH_CONTROL_DATA_COLLECTOR_DEBUG_LOG_H
 #define LAUNCH_CONTROL_DATA_COLLECTOR_DEBUG_LOG_H
 
