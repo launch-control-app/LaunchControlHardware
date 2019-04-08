@@ -7,6 +7,5 @@
 .vscode/launch.json
 
 # Added ignores
-.vscode/extensions.json
-.vscode/settings.json
+.vscode
 .travis.yml

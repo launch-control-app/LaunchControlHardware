@@ -8,7 +8,7 @@
 #include <Arduino.h>
 
 #define OBD_TIMEOUT_SHORT 1000 /* ms */
-#define OBD_TIMEOUT_LONG 10000 /* ms */
+#define OBD_TIMEOUT_LONG 3000 /* ms */
 
 #ifndef OBDUART
 #if defined(__AVR_ATmega328P__) || defined(__AVR_ATmega168P__)
