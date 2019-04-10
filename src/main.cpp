@@ -1,3 +1,9 @@
+/*
+  Creation Date: Tuesday, 29th January 2019 
+  Original Author: Christian Francisco 
+  Contents of File: Main loop of the program to poll a vehicle over OBD
+  and transmit via bluetooth
+*/
 // platformio device monitor > final_trip.txt
 
 #include <Arduino.h>
